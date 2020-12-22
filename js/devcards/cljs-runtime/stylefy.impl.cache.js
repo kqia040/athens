@@ -1,5 +1,4 @@
 goog.provide('stylefy.impl.cache');
-goog.require('cljs.core');
 stylefy.impl.cache.cache_prefix = "stylefy_cache_";
 stylefy.impl.cache.cache_styles_QMARK_ = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(false);
 stylefy.impl.cache.default_cache_expiration_time_s = (((((((1) * (60)) * (60)) * cljs.core._STAR_) * (24)) * cljs.core._STAR_) * (7));
@@ -42,8 +41,8 @@ return null;
 }
 });
 stylefy.impl.cache.set_cache_created_time = (function stylefy$impl$cache$set_cache_created_time(var_args){
-var G__42582 = arguments.length;
-switch (G__42582) {
+var G__42222 = arguments.length;
+switch (G__42222) {
 case 1:
 return stylefy.impl.cache.set_cache_created_time.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -69,8 +68,8 @@ return window.localStorage.setItem(stylefy.impl.cache.cache_key_created(instance
 (stylefy.impl.cache.set_cache_created_time.cljs$lang$maxFixedArity = 2);
 
 stylefy.impl.cache.clear_styles = (function stylefy$impl$cache$clear_styles(var_args){
-var G__42585 = arguments.length;
-switch (G__42585) {
+var G__42236 = arguments.length;
+switch (G__42236) {
 case 0:
 return stylefy.impl.cache.clear_styles.cljs$core$IFn$_invoke$arity$0();
 
@@ -96,8 +95,8 @@ return window.localStorage.setItem(stylefy.impl.cache.cache_key_styles(instance_
 (stylefy.impl.cache.clear_styles.cljs$lang$maxFixedArity = 1);
 
 stylefy.impl.cache.use_caching_BANG_ = (function stylefy$impl$cache$use_caching_BANG_(var_args){
-var G__42589 = arguments.length;
-switch (G__42589) {
+var G__42257 = arguments.length;
+switch (G__42257) {
 case 1:
 return stylefy.impl.cache.use_caching_BANG_.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -146,8 +145,8 @@ return null;
  *   Throws QUOTA_EXCEEDED_ERR if the storage is full.
  */
 stylefy.impl.cache.cache_styles = (function stylefy$impl$cache$cache_styles(var_args){
-var G__42593 = arguments.length;
-switch (G__42593) {
+var G__42283 = arguments.length;
+switch (G__42283) {
 case 1:
 return stylefy.impl.cache.cache_styles.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

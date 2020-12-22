@@ -1,7 +1,4 @@
 goog.provide('cljc.java_time.day_of_week');
-goog.require('cljs.core');
-goog.require('cljs.java_time.interop');
-goog.require('java.time');
 cljc.java_time.day_of_week.saturday = java.time.DayOfWeek.SATURDAY;
 cljc.java_time.day_of_week.thursday = java.time.DayOfWeek.THURSDAY;
 cljc.java_time.day_of_week.friday = java.time.DayOfWeek.FRIDAY;
@@ -16,8 +13,8 @@ cljc.java_time.day_of_week.values = (function cljc$java_time$day_of_week$values(
 return java.time.DayOfWeek.values();
 });
 cljc.java_time.day_of_week.value_of = (function cljc$java_time$day_of_week$value_of(var_args){
-var G__33723 = arguments.length;
-switch (G__33723) {
+var G__31022 = arguments.length;
+switch (G__31022) {
 case 1:
 return cljc.java_time.day_of_week.value_of.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

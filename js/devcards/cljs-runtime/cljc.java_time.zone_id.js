@@ -1,14 +1,11 @@
 goog.provide('cljc.java_time.zone_id');
-goog.require('cljs.core');
-goog.require('cljs.java_time.interop');
-goog.require('java.time');
 cljc.java_time.zone_id.short_ids = java.time.ZoneId.SHORT_IDS;
 cljc.java_time.zone_id.get_available_zone_ids = (function cljc$java_time$zone_id$get_available_zone_ids(){
 return java.time.ZoneId.getAvailableZoneIds();
 });
 cljc.java_time.zone_id.of = (function cljc$java_time$zone_id$of(var_args){
-var G__33632 = arguments.length;
-switch (G__33632) {
+var G__30488 = arguments.length;
+switch (G__30488) {
 case 1:
 return cljc.java_time.zone_id.of.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

@@ -6,9 +6,6 @@ goog.require("goog.asserts");
 goog.require("goog.dom");
 goog.require("goog.dom.InputType");
 goog.require("goog.dom.safe");
-/**
- * @suppress {extraRequire}
- */
 goog.require("goog.events.Event");
 goog.require("goog.events.EventHandler");
 goog.require("goog.events.EventTarget");
@@ -23,14 +20,6 @@ goog.require("goog.memoize");
 goog.require("goog.string");
 goog.require("goog.string.Const");
 goog.require("goog.userAgent");
-/**
- * @constructor
- * @extends {goog.events.EventTarget}
- * @param {boolean=} opt_invisible
- * @param {!goog.html.TrustedResourceUrl=} opt_blankPageUrl
- * @param {HTMLInputElement=} opt_input
- * @param {HTMLIFrameElement=} opt_iframe
- */
 goog.History = function(opt_invisible, opt_blankPageUrl, opt_input, opt_iframe) {
   goog.events.EventTarget.call(this);
   if (opt_invisible && !opt_blankPageUrl) {
@@ -45,9 +34,9 @@ goog.History = function(opt_invisible, opt_blankPageUrl, opt_input, opt_iframe) 
     goog.dom.safe.documentWrite(document, inputHtml);
     input = goog.dom.getElement(inputId);
   }
-  /** @private @type {HTMLInputElement} */ this.hiddenInput_ = /** @type {HTMLInputElement} */ (input);
-  /** @private @type {Window} */ this.window_ = opt_input ? goog.dom.getWindow(goog.dom.getOwnerDocument(opt_input)) : window;
-  /** @private @type {(!goog.html.TrustedResourceUrl|undefined)} */ this.iframeSrc_ = opt_blankPageUrl;
+  this.hiddenInput_ = input;
+  this.window_ = opt_input ? goog.dom.getWindow(goog.dom.getOwnerDocument(opt_input)) : window;
+  this.iframeSrc_ = opt_blankPageUrl;
   if (goog.userAgent.IE && !opt_blankPageUrl) {
     if (window.location.protocol == "https") {
       this.iframeSrc_ = goog.html.TrustedResourceUrl.fromConstant(goog.string.Const.from("https:///"));
@@ -55,10 +44,10 @@ goog.History = function(opt_invisible, opt_blankPageUrl, opt_input, opt_iframe) 
       this.iframeSrc_ = goog.html.TrustedResourceUrl.fromConstant(goog.string.Const.from('javascript:""'));
     }
   }
-  /** @private @type {goog.Timer} */ this.timer_ = new goog.Timer(goog.History.PollingType.NORMAL);
+  this.timer_ = new goog.Timer(goog.History.PollingType.NORMAL);
   this.registerDisposable(this.timer_);
-  /** @private @type {boolean} */ this.userVisible_ = !opt_invisible;
-  /** @private @type {goog.events.EventHandler<!goog.History>} */ this.eventHandler_ = new goog.events.EventHandler(this);
+  this.userVisible_ = !opt_invisible;
+  this.eventHandler_ = new goog.events.EventHandler(this);
   if (opt_invisible || goog.History.LEGACY_IE) {
     var iframe;
     if (opt_iframe) {
@@ -69,13 +58,13 @@ goog.History = function(opt_invisible, opt_blankPageUrl, opt_input, opt_iframe) 
       goog.dom.safe.documentWrite(document, iframeHtml);
       iframe = goog.dom.getElement(iframeId);
     }
-    /** @private @type {HTMLIFrameElement} */ this.iframe_ = /** @type {HTMLIFrameElement} */ (iframe);
-    /** @private @type {boolean} */ this.unsetIframe_ = true;
+    this.iframe_ = iframe;
+    this.unsetIframe_ = true;
   }
   if (goog.History.LEGACY_IE) {
     this.eventHandler_.listen(this.window_, goog.events.EventType.LOAD, this.onDocumentLoaded);
-    /** @protected @type {boolean} */ this.documentLoaded = false;
-    /** @private @type {boolean} */ this.shouldEnable_ = false;
+    this.documentLoaded = false;
+    this.shouldEnable_ = false;
   }
   if (this.userVisible_) {
     this.setHash_(this.getToken(), true);
@@ -85,26 +74,20 @@ goog.History = function(opt_invisible, opt_blankPageUrl, opt_input, opt_iframe) 
   goog.History.historyCount_++;
 };
 goog.inherits(goog.History, goog.events.EventTarget);
-/** @private @type {boolean} */ goog.History.prototype.enabled_ = false;
-/** @private @type {boolean} */ goog.History.prototype.longerPolling_ = false;
-/** @private @type {?string} */ goog.History.prototype.lastToken_ = null;
-/**
- * @return {boolean}
- */
+goog.History.prototype.enabled_ = false;
+goog.History.prototype.longerPolling_ = false;
+goog.History.prototype.lastToken_ = null;
 goog.History.isOnHashChangeSupported = goog.memoize(function() {
   return goog.userAgent.IE ? goog.userAgent.isDocumentModeOrHigher(8) : "onhashchange" in goog.global;
 });
-/** @type {boolean} */ goog.History.LEGACY_IE = goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(8);
-/** @type {boolean} */ goog.History.HASH_ALWAYS_REQUIRED = goog.History.LEGACY_IE;
-/** @private @type {?string} */ goog.History.prototype.lockedToken_ = null;
-/** @override */ goog.History.prototype.disposeInternal = function() {
+goog.History.LEGACY_IE = goog.userAgent.IE && !goog.userAgent.isDocumentModeOrHigher(8);
+goog.History.HASH_ALWAYS_REQUIRED = goog.History.LEGACY_IE;
+goog.History.prototype.lockedToken_ = null;
+goog.History.prototype.disposeInternal = function() {
   goog.History.superClass_.disposeInternal.call(this);
   this.eventHandler_.dispose();
   this.setEnabled(false);
 };
-/**
- * @param {boolean} enable
- */
 goog.History.prototype.setEnabled = function(enable) {
   if (enable == this.enabled_) {
     return;
@@ -142,36 +125,25 @@ goog.History.prototype.setEnabled = function(enable) {
     this.timer_.stop();
   }
 };
-/** @protected */ goog.History.prototype.onDocumentLoaded = function() {
+goog.History.prototype.onDocumentLoaded = function() {
   this.documentLoaded = true;
   if (this.hiddenInput_.value) {
     this.setIframeToken_(this.hiddenInput_.value, true);
   }
   this.setEnabled(this.shouldEnable_);
 };
-/**
- * @private
- * @param {goog.events.BrowserEvent} e
- */
 goog.History.prototype.onShow_ = function(e) {
   if (e.getBrowserEvent()["persisted"]) {
     this.setEnabled(false);
     this.setEnabled(true);
   }
 };
-/**
- * @private
- * @param {goog.events.BrowserEvent} e
- */
 goog.History.prototype.onHashChange_ = function(e) {
   var hash = this.getLocationFragment_(this.window_);
   if (hash != this.lastToken_) {
     this.update_(hash, true);
   }
 };
-/**
- * @return {string}
- */
 goog.History.prototype.getToken = function() {
   if (this.lockedToken_ != null) {
     return this.lockedToken_;
@@ -183,36 +155,17 @@ goog.History.prototype.getToken = function() {
     }
   }
 };
-/**
- * @param {string} token
- * @param {string=} opt_title
- */
 goog.History.prototype.setToken = function(token, opt_title) {
   this.setHistoryState_(token, false, opt_title);
 };
-/**
- * @param {string} token
- * @param {string=} opt_title
- */
 goog.History.prototype.replaceToken = function(token, opt_title) {
   this.setHistoryState_(token, true, opt_title);
 };
-/**
- * @private
- * @param {Window} win
- * @return {string}
- */
 goog.History.prototype.getLocationFragment_ = function(win) {
   var href = win.location.href;
   var index = href.indexOf("#");
   return index < 0 ? "" : href.substring(index + 1);
 };
-/**
- * @private
- * @param {string} token
- * @param {boolean} replace
- * @param {string=} opt_title
- */
 goog.History.prototype.setHistoryState_ = function(token, replace, opt_title) {
   if (this.getToken() != token) {
     if (this.userVisible_) {
@@ -232,11 +185,6 @@ goog.History.prototype.setHistoryState_ = function(token, replace, opt_title) {
     }
   }
 };
-/**
- * @private
- * @param {string} token
- * @param {boolean=} opt_replace
- */
 goog.History.prototype.setHash_ = function(token, opt_replace) {
   var loc = this.window_.location;
   var url = loc.href.split("#")[0];
@@ -253,12 +201,6 @@ goog.History.prototype.setHash_ = function(token, opt_replace) {
     }
   }
 };
-/**
- * @private
- * @param {string} token
- * @param {boolean=} opt_replace
- * @param {string=} opt_title
- */
 goog.History.prototype.setIframeToken_ = function(token, opt_replace, opt_title) {
   if (this.unsetIframe_ || token != this.getIframeToken_()) {
     this.unsetIframe_ = false;
@@ -271,7 +213,7 @@ goog.History.prototype.setIframeToken_ = function(token, opt_replace, opt_title)
       doc.close();
     } else {
       goog.asserts.assertInstanceof(this.iframeSrc_, goog.html.TrustedResourceUrl, "this.iframeSrc_ must be set on calls to setIframeToken_");
-      var url = goog.html.TrustedResourceUrl.unwrap(/** @type {!goog.html.TrustedResourceUrl} */ (this.iframeSrc_)) + "#" + token;
+      var url = goog.html.TrustedResourceUrl.unwrap(this.iframeSrc_) + "#" + token;
       var contentWindow = this.iframe_.contentWindow;
       if (contentWindow) {
         if (opt_replace) {
@@ -283,10 +225,6 @@ goog.History.prototype.setIframeToken_ = function(token, opt_replace, opt_title)
     }
   }
 };
-/**
- * @private
- * @return {?string}
- */
 goog.History.prototype.getIframeToken_ = function() {
   if (goog.userAgent.IE) {
     var doc = goog.dom.getFrameContentDocument(this.iframe_);
@@ -312,10 +250,6 @@ goog.History.prototype.getIframeToken_ = function() {
     }
   }
 };
-/**
- * @private
- * @param {boolean} isNavigation
- */
 goog.History.prototype.check_ = function(isNavigation) {
   if (this.userVisible_) {
     var hash = this.getLocationFragment_(this.window_);
@@ -333,11 +267,6 @@ goog.History.prototype.check_ = function(isNavigation) {
     }
   }
 };
-/**
- * @private
- * @param {string} token
- * @param {boolean} isNavigation
- */
 goog.History.prototype.update_ = function(token, isNavigation) {
   this.lastToken_ = this.hiddenInput_.value = token;
   if (this.userVisible_) {
@@ -350,33 +279,20 @@ goog.History.prototype.update_ = function(token, isNavigation) {
   }
   this.dispatchEvent(new goog.history.Event(this.getToken(), isNavigation));
 };
-/**
- * @private
- * @param {boolean} longerPolling
- */
 goog.History.prototype.setLongerPolling_ = function(longerPolling) {
   if (this.longerPolling_ != longerPolling) {
     this.timer_.setInterval(longerPolling ? goog.History.PollingType.LONG : goog.History.PollingType.NORMAL);
   }
   this.longerPolling_ = longerPolling;
 };
-/** @private */ goog.History.prototype.operaDefibrillator_ = function() {
+goog.History.prototype.operaDefibrillator_ = function() {
   this.timer_.stop();
   this.timer_.start();
 };
-/** @private @type {Array<string>} */ goog.History.INPUT_EVENTS_ = [goog.events.EventType.MOUSEDOWN, goog.events.EventType.KEYDOWN, goog.events.EventType.MOUSEMOVE];
-/** @private @type {number} */ goog.History.historyCount_ = 0;
-/** @enum {number} */ goog.History.PollingType = {NORMAL:150, LONG:10000};
-/**
- * @enum {string}
- * @deprecated Use goog.history.EventType.
- */
+goog.History.INPUT_EVENTS_ = [goog.events.EventType.MOUSEDOWN, goog.events.EventType.KEYDOWN, goog.events.EventType.MOUSEMOVE];
+goog.History.historyCount_ = 0;
+goog.History.PollingType = {NORMAL:150, LONG:10000};
 goog.History.EventType = goog.history.EventType;
-/**
- * @final
- * @constructor
- * @deprecated Use goog.history.Event.
- */
 goog.History.Event = goog.history.Event;
 
 //# sourceMappingURL=goog.history.history.js.map

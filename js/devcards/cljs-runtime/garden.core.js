@@ -1,20 +1,18 @@
 goog.provide('garden.core');
-goog.require('cljs.core');
-goog.require('garden.compiler');
 /**
  * Convert a variable number of Clojure data structure to a string of
  *   CSS. The first argument may be a list of flags for the compiler.
  */
 garden.core.css = (function garden$core$css(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___39954 = arguments.length;
-var i__4737__auto___39955 = (0);
+var len__4736__auto___39827 = arguments.length;
+var i__4737__auto___39828 = (0);
 while(true){
-if((i__4737__auto___39955 < len__4736__auto___39954)){
-args__4742__auto__.push((arguments[i__4737__auto___39955]));
+if((i__4737__auto___39828 < len__4736__auto___39827)){
+args__4742__auto__.push((arguments[i__4737__auto___39828]));
 
-var G__39956 = (i__4737__auto___39955 + (1));
-i__4737__auto___39955 = G__39956;
+var G__39830 = (i__4737__auto___39828 + (1));
+i__4737__auto___39828 = G__39830;
 continue;
 } else {
 }
@@ -32,9 +30,9 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(garden.compiler.compile_css
 (garden.core.css.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(garden.core.css.cljs$lang$applyTo = (function (seq39951){
+(garden.core.css.cljs$lang$applyTo = (function (seq39812){
 var self__4724__auto__ = this;
-return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq39951));
+return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq39812));
 }));
 
 /**
@@ -43,14 +41,14 @@ return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq
  */
 garden.core.style = (function garden$core$style(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___39957 = arguments.length;
-var i__4737__auto___39958 = (0);
+var len__4736__auto___39834 = arguments.length;
+var i__4737__auto___39835 = (0);
 while(true){
-if((i__4737__auto___39958 < len__4736__auto___39957)){
-args__4742__auto__.push((arguments[i__4737__auto___39958]));
+if((i__4737__auto___39835 < len__4736__auto___39834)){
+args__4742__auto__.push((arguments[i__4737__auto___39835]));
 
-var G__39959 = (i__4737__auto___39958 + (1));
-i__4737__auto___39958 = G__39959;
+var G__39836 = (i__4737__auto___39835 + (1));
+i__4737__auto___39835 = G__39836;
 continue;
 } else {
 }
@@ -68,9 +66,9 @@ return garden.compiler.compile_style(maps);
 (garden.core.style.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(garden.core.style.cljs$lang$applyTo = (function (seq39953){
+(garden.core.style.cljs$lang$applyTo = (function (seq39821){
 var self__4724__auto__ = this;
-return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq39953));
+return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq39821));
 }));
 
 

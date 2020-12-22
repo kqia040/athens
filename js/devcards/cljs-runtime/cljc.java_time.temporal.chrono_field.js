@@ -1,7 +1,4 @@
 goog.provide('cljc.java_time.temporal.chrono_field');
-goog.require('cljs.core');
-goog.require('cljs.java_time.interop');
-goog.require('java.time.temporal');
 cljc.java_time.temporal.chrono_field.milli_of_second = java.time.temporal.ChronoField.MILLI_OF_SECOND;
 cljc.java_time.temporal.chrono_field.year_of_era = java.time.temporal.ChronoField.YEAR_OF_ERA;
 cljc.java_time.temporal.chrono_field.clock_hour_of_day = java.time.temporal.ChronoField.CLOCK_HOUR_OF_DAY;
@@ -42,8 +39,8 @@ cljc.java_time.temporal.chrono_field.values = (function cljc$java_time$temporal$
 return java.time.temporal.ChronoField.values();
 });
 cljc.java_time.temporal.chrono_field.value_of = (function cljc$java_time$temporal$chrono_field$value_of(var_args){
-var G__33739 = arguments.length;
-switch (G__33739) {
+var G__31169 = arguments.length;
+switch (G__31169) {
 case 1:
 return cljc.java_time.temporal.chrono_field.value_of.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

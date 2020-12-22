@@ -1,9 +1,4 @@
 goog.provide('re_frame.cofx');
-goog.require('cljs.core');
-goog.require('re_frame.db');
-goog.require('re_frame.interceptor');
-goog.require('re_frame.registrar');
-goog.require('re_frame.loggers');
 re_frame.cofx.kind = new cljs.core.Keyword(null,"cofx","cofx",2013202907);
 if(cljs.core.truth_((re_frame.registrar.kinds.cljs$core$IFn$_invoke$arity$1 ? re_frame.registrar.kinds.cljs$core$IFn$_invoke$arity$1(re_frame.cofx.kind) : re_frame.registrar.kinds.call(null,re_frame.cofx.kind)))){
 } else {
@@ -13,8 +8,8 @@ re_frame.cofx.reg_cofx = (function re_frame$cofx$reg_cofx(id,handler){
 return re_frame.registrar.register_handler(re_frame.cofx.kind,id,handler);
 });
 re_frame.cofx.inject_cofx = (function re_frame$cofx$inject_cofx(var_args){
-var G__51239 = arguments.length;
-switch (G__51239) {
+var G__49634 = arguments.length;
+switch (G__49634) {
 case 1:
 return re_frame.cofx.inject_cofx.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

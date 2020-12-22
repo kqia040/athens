@@ -1,7 +1,4 @@
 goog.provide('cljc.java_time.zone_offset');
-goog.require('cljs.core');
-goog.require('cljs.java_time.interop');
-goog.require('java.time');
 cljc.java_time.zone_offset.max = java.time.ZoneOffset.MAX;
 cljc.java_time.zone_offset.min = java.time.ZoneOffset.MIN;
 cljc.java_time.zone_offset.utc = java.time.ZoneOffset.UTC;
@@ -15,8 +12,8 @@ cljc.java_time.zone_offset.of_total_seconds = (function cljc$java_time$zone_offs
 return java.time.ZoneOffset.ofTotalSeconds(int4658);
 });
 cljc.java_time.zone_offset.of = (function cljc$java_time$zone_offset$of(var_args){
-var G__33640 = arguments.length;
-switch (G__33640) {
+var G__30558 = arguments.length;
+switch (G__30558) {
 case 1:
 return cljc.java_time.zone_offset.of.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

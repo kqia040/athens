@@ -1,7 +1,4 @@
 goog.provide('cljc.java_time.month');
-goog.require('cljs.core');
-goog.require('cljs.java_time.interop');
-goog.require('java.time');
 cljc.java_time.month.may = java.time.Month.MAY;
 cljc.java_time.month.december = java.time.Month.DECEMBER;
 cljc.java_time.month.june = java.time.Month.JUNE;
@@ -21,8 +18,8 @@ cljc.java_time.month.values = (function cljc$java_time$month$values(){
 return java.time.Month.values();
 });
 cljc.java_time.month.value_of = (function cljc$java_time$month$value_of(var_args){
-var G__33709 = arguments.length;
-switch (G__33709) {
+var G__30717 = arguments.length;
+switch (G__30717) {
 case 1:
 return cljc.java_time.month.value_of.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

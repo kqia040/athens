@@ -1,7 +1,4 @@
 goog.provide('cljc.java_time.local_time');
-goog.require('cljs.core');
-goog.require('cljs.java_time.interop');
-goog.require('java.time');
 cljc.java_time.local_time.max = java.time.LocalTime.MAX;
 cljc.java_time.local_time.noon = java.time.LocalTime.NOON;
 cljc.java_time.local_time.midnight = java.time.LocalTime.MIDNIGHT;
@@ -25,8 +22,8 @@ cljc.java_time.local_time.minus_hours = (function cljc$java_time$local_time$minu
 return this4249.minusHours(long4250);
 });
 cljc.java_time.local_time.of = (function cljc$java_time$local_time$of(var_args){
-var G__33529 = arguments.length;
-switch (G__33529) {
+var G__30313 = arguments.length;
+switch (G__30313) {
 case 3:
 return cljc.java_time.local_time.of.cljs$core$IFn$_invoke$arity$3((arguments[(0)]),(arguments[(1)]),(arguments[(2)]));
 
@@ -72,8 +69,8 @@ cljc.java_time.local_time.plus_nanos = (function cljc$java_time$local_time$plus_
 return this4264.plusNanos(long4265);
 });
 cljc.java_time.local_time.plus = (function cljc$java_time$local_time$plus(var_args){
-var G__33555 = arguments.length;
-switch (G__33555) {
+var G__30339 = arguments.length;
+switch (G__30339) {
 case 2:
 return cljc.java_time.local_time.plus.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -120,8 +117,8 @@ cljc.java_time.local_time.is_before = (function cljc$java_time$local_time$is_bef
 return this4282.isBefore(java_time_LocalTime4283);
 });
 cljc.java_time.local_time.minus = (function cljc$java_time$local_time$minus(var_args){
-var G__33560 = arguments.length;
-switch (G__33560) {
+var G__30366 = arguments.length;
+switch (G__30366) {
 case 2:
 return cljc.java_time.local_time.minus.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -177,8 +174,8 @@ cljc.java_time.local_time.is_supported = (function cljc$java_time$local_time$is_
 return this4305.isSupported(G__4306);
 });
 cljc.java_time.local_time.parse = (function cljc$java_time$local_time$parse(var_args){
-var G__33563 = arguments.length;
-switch (G__33563) {
+var G__30394 = arguments.length;
+switch (G__30394) {
 case 2:
 return cljc.java_time.local_time.parse.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -216,8 +213,8 @@ cljc.java_time.local_time.adjust_into = (function cljc$java_time$local_time$adju
 return this4314.adjustInto(java_time_temporal_Temporal4315);
 });
 cljc.java_time.local_time.with$ = (function cljc$java_time$local_time$with(var_args){
-var G__33573 = arguments.length;
-switch (G__33573) {
+var G__30410 = arguments.length;
+switch (G__30410) {
 case 2:
 return cljc.java_time.local_time.with$.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -243,8 +240,8 @@ return this4318.with(G__4319,G__4320);
 (cljc.java_time.local_time.with$.cljs$lang$maxFixedArity = 3);
 
 cljc.java_time.local_time.now = (function cljc$java_time$local_time$now(var_args){
-var G__33575 = arguments.length;
-switch (G__33575) {
+var G__30418 = arguments.length;
+switch (G__30418) {
 case 1:
 return cljc.java_time.local_time.now.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 

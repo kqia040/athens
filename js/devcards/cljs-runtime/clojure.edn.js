@@ -1,6 +1,4 @@
 goog.provide('clojure.edn');
-goog.require('cljs.core');
-goog.require('cljs.reader');
 /**
  * Reads the first object from an cljs.tools.reader.reader-types/IPushbackReader.
  * Returns the object read. If EOF, throws if eof-error? is true otherwise returns eof.
@@ -20,8 +18,8 @@ goog.require('cljs.reader');
  *            be called with the tag and the value.
  */
 clojure.edn.read = (function clojure$edn$read(var_args){
-var G__38306 = arguments.length;
-switch (G__38306) {
+var G__31284 = arguments.length;
+switch (G__31284) {
 case 1:
 return clojure.edn.read.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -64,8 +62,8 @@ return cljs.reader.read.cljs$core$IFn$_invoke$arity$4(reader,eof_error_QMARK_,eo
  * opts is a map as per cljs.tools.reader.edn/read
  */
 clojure.edn.read_string = (function clojure$edn$read_string(var_args){
-var G__38308 = arguments.length;
-switch (G__38308) {
+var G__31289 = arguments.length;
+switch (G__31289) {
 case 1:
 return clojure.edn.read_string.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
